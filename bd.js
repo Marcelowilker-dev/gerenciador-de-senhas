@@ -12,14 +12,15 @@ client.query(`
 CREATE TABLE IF NOT EXISTS usuario (
   id SERIAL   PRIMARY KEY,
   email VARCHAR(30) NOT NULL ,
-  senha VARCHAR(30) NOT NULL
+  senha VARCHAR(100) NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS senhas (
   id SERIAL  PRIMARY KEY,
+  usuario_acesso VARCHAR(50) NOT NULL ,
   senha VARCHAR(30) NOT NULL,
-  descricao VARCHAR(100) NOT NULL,
-  usuario_id INTEGER REFERENCES usuario(id)
+  tipo INTEGER NOT NULL,
+  usuario_id INTEGER REFERENCES usuario(id) NOT NULL
 );
 `, (err) => {
   if (err) {

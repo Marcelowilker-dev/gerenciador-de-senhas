@@ -6,7 +6,7 @@ const port = 3000;
 const app = express();
 const indexRouter = require("./routes/index");
 const usuarioRouter = require("./routes/usuario");
-const senhasRouter = require("./routes/senhas");
+
 
 app.use(cors())
 app.use(bodyParser.json());

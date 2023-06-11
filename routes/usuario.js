@@ -12,7 +12,7 @@ router.post('/login', async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    // Consulta no banco de dados para verificar as credenciais
+    // Consulta no banco de dados para verificar snha e email
     const userResult = await client.query('SELECT id, email, senha FROM usuario WHERE email = $1', [email]);
     const user = userResult.rows[0];
 
@@ -20,7 +20,7 @@ router.post('/login', async (req, res) => {
       autenticado = true;
       userId = user.id;
 
-      // Gera o token com o ID do usuário
+      // Gera o token com o ID do usuario
       const token = jwt.sign({ userId }, secretKey);
       
       res.json({ message: 'login realizado com sucesso', token });
@@ -41,7 +41,7 @@ router.post('/cadastrar', async (req, res) => {
   const { email, senha } = req.body;
 
   try {
-    const hashedSenha = await bcrypt.hash(senha, 10); // Hash da senha com 10 rounds de salt
+    const hashedSenha = await bcrypt.hash(senha, 10); // Hash da senha com 10 rounds 
 
     await client.query('INSERT INTO usuario (email, senha) VALUES ($1, $2)', [email, hashedSenha]);
     res.json({ message: 'Usuário registrado com sucesso' });
@@ -51,7 +51,7 @@ router.post('/cadastrar', async (req, res) => {
   }
 });
 
-// Função para excluir uma senha
+
 router.delete('/excluirSenha/:id', async (req, res) => {
   const userId = user.id;
 

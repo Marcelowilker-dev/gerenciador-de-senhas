@@ -51,7 +51,6 @@ router.post('/cadastrar', async (req, res) => {
   }
 });
 
-
 router.delete('/excluirSenha/:id', async (req, res) => {
   const userId = user.id;
 
